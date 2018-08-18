@@ -182,9 +182,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Git\\personal\\symmetrical-tribble\\Stitchy\\Stitch.App\\Stitchy.App.csproj",
-      "projectName": "Stitchy.App",
-      "projectPath": "C:\\Git\\personal\\symmetrical-tribble\\Stitchy\\Stitch.App\\Stitchy.App.csproj",
+      "projectUniqueName": "C:\\Git\\personal\\symmetrical-tribble\\Stitchy\\Stitch.App\\Stitchy.Logic.csproj",
+      "projectName": "Stitchy.Logic",
+      "projectPath": "C:\\Git\\personal\\symmetrical-tribble\\Stitchy\\Stitch.App\\Stitchy.Logic.csproj",
       "packagesPath": "C:\\Users\\v-spdale\\.nuget\\packages\\",
       "outputPath": "C:\\Git\\personal\\symmetrical-tribble\\Stitchy\\Stitch.App\\obj\\",
       "projectStyle": "PackageReference",

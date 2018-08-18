@@ -9,7 +9,8 @@
         ResizeMode="CanMinimize"
         SizeToContent="WidthAndHeight">
     <Grid Margin="0,0,0,0">
-        <TextBox HorizontalAlignment="Left"
+        <TextBox Name="comments"
+                 HorizontalAlignment="Left"
                  VerticalAlignment="Top"
                  Margin="10,10,0,0"
                  Height="23"
@@ -21,11 +22,26 @@
                 VerticalAlignment="Top"
                 Margin="462,10,10,0" 
                 Width="76" 
-                Height="23"/>
-        <ListBox HorizontalAlignment="Left" 
+                Height="23"
+                Click="Button_Click"/>
+        <ListBox Name="stitchList"
+                 HorizontalAlignment="Left" 
                  VerticalAlignment="Top" 
                  Margin="10,38,10,10" 
                  Width="528"
-                 Height="350" />
+                 Height="350">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Comments}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

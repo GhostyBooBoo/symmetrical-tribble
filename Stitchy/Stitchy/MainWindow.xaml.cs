@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stitchy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,32 @@ namespace Stitchy
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowModel model;
         public MainWindow()
         {
             InitializeComponent();
+            this.model = new MainWindowModel();
+            this.model.Stitches.Add(new Stitch()
+            {
+                Comments = "default",
+                Date = DateTime.Today,
+                Duration = TimeSpan.FromHours(2.5)
+            });
+
+            stitchList.ItemsSource = model.Stitches;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var stitch = new Stitch()
+            {
+                Comments = comments.Text,
+                Date = DateTime.Today,
+                Duration = TimeSpan.FromHours(2.5)
+            };
 
+            this.model.Stitches.Add(stitch);
+            stitchList.Items.Refresh();
+        }
     }
 }
