@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Stitchy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Stitchy" Height="425" Width="560.5"
+        ResizeMode="CanMinimize"
+        SizeToContent="WidthAndHeight">
+    <Grid Margin="0,0,0,0">
+        <TextBox HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="10,10,0,0"
+                 Height="23"
+                 Width="445"
+                 TextWrapping="Wrap"
+                 Text="Comments..."/>
+        <Button Content="Add" 
+                HorizontalAlignment="Left"  
+                VerticalAlignment="Top"
+                Margin="462,10,10,0" 
+                Width="76" 
+                Height="23"/>
+        <ListBox HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Margin="10,38,10,10" 
+                 Width="528"
+                 Height="350" />
     </Grid>
 </Window>
