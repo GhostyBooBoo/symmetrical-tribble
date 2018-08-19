@@ -48,5 +48,13 @@ namespace Stitchy
             this.model.Stitches.Add(stitch);
             stitchList.Items.Refresh();
         }
+
+        private void StitchListItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (stitchList.SelectedIndex == -1) { return; }
+
+            this.model.Stitches.RemoveAt(stitchList.SelectedIndex);
+            stitchList.Items.Refresh();
+        }
     }
 }
