@@ -54,14 +54,24 @@
                                     <ColumnDefinition Width="100" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{Binding Comments}" />
-                                <TextBlock Grid.Column="1" Text="{Binding Path=Date, StringFormat='d'}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Path=StartDate, StringFormat='d'}" />
                                 <TextBlock Grid.Column="2" Text="{Binding Path=Duration}" />
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <xctk:DateTimePicker HorizontalAlignment="Left" Margin="10,38,10,0" VerticalAlignment="Top" Width="449"/>
-                <xctk:DateTimePicker HorizontalAlignment="Left" Margin="10,63,10,0" VerticalAlignment="Top" Width="449"/>
+                <xctk:DateTimePicker 
+                    Name="startTime"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="10,38,10,0"
+                    Width="449"/>
+                <xctk:DateTimePicker
+                    Name="endTime"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="10,63,10,0"
+                    Width="449"/>
             </Grid>
         </StackPanel>
     </DockPanel>

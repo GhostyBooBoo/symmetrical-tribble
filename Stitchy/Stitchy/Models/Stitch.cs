@@ -8,8 +8,16 @@ namespace Stitchy.Models
     {
         public string Comments { get; set; }
 
-        public TimeSpan Duration { get; set; }
+        public DateTime EndDate { get; set; } = DateTime.Now;
 
-        public DateTime Date { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.Now;
+
+        public TimeSpan Duration
+        {
+            get
+            {
+                return this.EndDate - this.StartDate;
+            }
+        }
     }
 }

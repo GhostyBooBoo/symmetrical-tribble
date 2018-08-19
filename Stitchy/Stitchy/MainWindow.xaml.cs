@@ -38,8 +38,8 @@ namespace Stitchy
             var stitch = new Stitch()
             {
                 Comments = comments.Text,
-                Date = DateTime.Today,
-                Duration = TimeSpan.FromHours(2.5)
+                StartDate = startTime.Value ?? DateTime.Now,
+                EndDate = endTime.Value ?? DateTime.Now
             };
 
             this.model.Stitches.Add(stitch);
