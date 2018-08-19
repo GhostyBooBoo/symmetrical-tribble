@@ -8,8 +8,18 @@
         Title="Stitchy" Height="425" Width="560.5"
         ResizeMode="CanMinimize"
         SizeToContent="WidthAndHeight">
-    <Grid Margin="0,0,0,0">
-        <TextBox Name="comments"
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel>
+
+            <Grid Margin="0,0,0,0">
+
+                <TextBox Name="comments"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Top"
                  Margin="10,10,0,0"
@@ -17,36 +27,38 @@
                  Width="445"
                  TextWrapping="Wrap"
                  Text="Comments..."/>
-        <Button Content="Add" 
+                <Button Content="Add" 
                 HorizontalAlignment="Left"  
                 VerticalAlignment="Top"
                 Margin="462,10,10,0" 
                 Width="76" 
                 Height="23"
                 Click="Button_Click"/>
-        <ListBox Name="stitchList"
+                <ListBox Name="stitchList"
                  HorizontalAlignment="Left" 
                  VerticalAlignment="Top" 
                  Margin="10,38,10,10" 
                  Width="528"
                  Height="350">
-            <ListBox.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Delete" Click="StitchListItemDelete_Click"/>
-                </ContextMenu>
-            </ListBox.ContextMenu>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="0,2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="100" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Comments}" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Delete" Click="StitchListItemDelete_Click"/>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Comments}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </StackPanel>
+    </DockPanel>
 </Window>
