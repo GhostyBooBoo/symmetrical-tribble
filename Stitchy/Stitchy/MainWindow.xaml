@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Stitchy"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Stitchy" Height="425" Width="560.5"
         ResizeMode="CanMinimize"
@@ -22,22 +23,23 @@
                  VerticalAlignment="Top"
                  Margin="10,10,0,0"
                  Height="23"
-                 Width="445"
+                 Width="449"
                  TextWrapping="Wrap"
                  Text="Comments..."/>
                 <Button Content="Add" 
                 HorizontalAlignment="Left"  
                 VerticalAlignment="Top"
-                Margin="462,10,10,0" 
-                Width="76" 
-                Height="23"
+                Margin="464,10,0,0" 
+                Width="74" 
+                Height="73"
                 Click="Button_Add_Click"/>
                 <ListBox Name="stitchList"
-                 HorizontalAlignment="Left" 
-                 VerticalAlignment="Top" 
-                 Margin="10,38,10,10" 
-                 Width="528"
-                 Height="350">
+                         HorizontalContentAlignment="Stretch"
+                         HorizontalAlignment="Left" 
+                         VerticalAlignment="Top" 
+                         Margin="10,94,10,10" 
+                         Width="528"
+                         Height="294">
                     <ListBox.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Delete" Click="StitchListItemDelete_Click"/>
@@ -52,10 +54,14 @@
                                     <ColumnDefinition Width="100" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{Binding Comments}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Path=Date, StringFormat='d'}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Path=Duration}" />
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <xctk:DateTimePicker HorizontalAlignment="Left" Margin="10,38,10,0" VerticalAlignment="Top" Width="449"/>
+                <xctk:DateTimePicker HorizontalAlignment="Left" Margin="10,63,10,0" VerticalAlignment="Top" Width="449"/>
             </Grid>
         </StackPanel>
     </DockPanel>
