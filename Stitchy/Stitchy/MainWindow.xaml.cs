@@ -22,21 +22,18 @@ namespace Stitchy
     public partial class MainWindow : Window
     {
         private MainWindowModel model;
+        private PersistenceProcessor persistenceProcessor;
+
         public MainWindow()
         {
             InitializeComponent();
             this.model = new MainWindowModel();
-            this.model.Stitches.Add(new Stitch()
-            {
-                Comments = "default",
-                Date = DateTime.Today,
-                Duration = TimeSpan.FromHours(2.5)
-            });
+            this.persistenceProcessor = new PersistenceProcessor();
 
             stitchList.ItemsSource = model.Stitches;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
             var stitch = new Stitch()
             {
@@ -55,6 +52,11 @@ namespace Stitchy
 
             this.model.Stitches.RemoveAt(stitchList.SelectedIndex);
             stitchList.Items.Refresh();
+        }
+
+        private void MenuItemSave_Click(object sender, RoutedEventArgs e)
+        {
+            this.persistenceProcessor.Save(this.model.Stitches);
         }
     }
 }
