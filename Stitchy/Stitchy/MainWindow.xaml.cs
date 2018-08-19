@@ -62,6 +62,7 @@ namespace Stitchy
         private void MenuItemOpen_Click(object sender, RoutedEventArgs e)
         {
             var data = this.persistenceProcessor.Open();
+            this.model.Stitches.Clear();
             this.model.Stitches.AddRange(data);
             stitchList.Items.Refresh();
         }
