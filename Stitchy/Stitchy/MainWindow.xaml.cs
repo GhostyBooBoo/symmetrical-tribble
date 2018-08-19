@@ -65,6 +65,15 @@ namespace Stitchy
             this.model.Stitches.Clear();
             this.model.Stitches.AddRange(data);
             stitchList.Items.Refresh();
+
+            var totalDuration = new TimeSpan(0);
+
+            foreach(var stitch in this.model.Stitches)
+            {
+                totalDuration += stitch.Duration;
+            }
+
+            totalDisplay.Text = $"Total time: {totalDuration}";
         }
     }
 }

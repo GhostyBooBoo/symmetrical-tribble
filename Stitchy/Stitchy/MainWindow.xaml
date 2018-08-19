@@ -16,63 +16,68 @@
                 <MenuItem Header="_Save" Click="MenuItemSave_Click"/>
             </MenuItem>
         </Menu>
-        <StackPanel>
-            <Grid Margin="0,0,0,0">
-                <TextBox Name="comments"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Top"
-                 Margin="10,10,0,0"
-                 Height="23"
-                 Width="449"
-                 TextWrapping="Wrap"
-                 Text="Comments..."/>
-                <Button Content="Add" 
+        <Grid Margin="0,0,0,0"
+              DockPanel.Dock="Top">
+            <TextBox Name="comments"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="10,10,0,0"
+                Height="23"
+                Width="449"
+                TextWrapping="Wrap"
+                Text="Comments..."/>
+            <Button Content="Add" 
                 HorizontalAlignment="Left"  
                 VerticalAlignment="Top"
                 Margin="464,10,0,0" 
                 Width="74" 
                 Height="73"
                 Click="Button_Add_Click"/>
-                <ListBox Name="stitchList"
+            <ListBox Name="stitchList"
                          HorizontalContentAlignment="Stretch"
                          HorizontalAlignment="Left" 
                          VerticalAlignment="Top" 
                          Margin="10,94,10,10" 
                          Width="528"
                          Height="294">
-                    <ListBox.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Delete" Click="StitchListItemDelete_Click"/>
-                        </ContextMenu>
-                    </ListBox.ContextMenu>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="100" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Comments}" />
-                                <TextBlock Grid.Column="1" Text="{Binding Path=StartDate, StringFormat='d'}" />
-                                <TextBlock Grid.Column="2" Text="{Binding Path=Duration}" />
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <xctk:DateTimePicker 
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Delete" Click="StitchListItemDelete_Click"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Comments}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Path=StartDate, StringFormat='d'}" />
+                            <TextBlock Grid.Column="2" Text="{Binding Path=Duration}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <xctk:DateTimePicker 
                     Name="startTime"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Margin="10,38,10,0"
                     Width="449"/>
-                <xctk:DateTimePicker
+            <xctk:DateTimePicker
                     Name="endTime"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Margin="10,63,10,0"
                     Width="449"/>
-            </Grid>
-        </StackPanel>
+        </Grid>
+        <StatusBar DockPanel.Dock="Bottom"
+                   VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="totalDisplay" />
+            </StatusBarItem>
+        </StatusBar>
     </DockPanel>
 </Window>
