@@ -11,26 +11,45 @@ namespace Stitchy
 {
     public class PersistenceProcessor
     {
+        private readonly string DirectoryName = @"C:\Stitchy";
+        private readonly string SaveFileName = "saveData.json";
+
         public void Save(List<Stitch> data)
         {
             var jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
 
-            var saveDirectory = @"C:\Stitchy";
-            Directory.CreateDirectory(saveDirectory);
+            Directory.CreateDirectory(DirectoryName);
 
             try
             {
-                using (StreamWriter file = new StreamWriter($"{saveDirectory}\\saveData.json", false))
+                using (StreamWriter file = new StreamWriter($"{DirectoryName}\\{SaveFileName}", false))
                 {
                     file.Write(jsonData.ToCharArray());
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.Write(e.Message);
             }
 
             return;
+        }
+
+        public List<Stitch> Open()
+        {
+            var data = new List<Stitch>();
+
+            try
+            {
+                using (StreamReader file = File.OpenText($"{DirectoryName}\\{SaveFileName}"))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    data = (List<Stitch>)serializer.Deserialize(file, typeof(List<Stitch>));
+                }
+            }
+            catch { }
+
+            return data;
         }
     }
 }

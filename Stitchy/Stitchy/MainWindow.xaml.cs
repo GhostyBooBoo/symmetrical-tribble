@@ -58,5 +58,12 @@ namespace Stitchy
         {
             this.persistenceProcessor.Save(this.model.Stitches);
         }
+
+        private void MenuItemOpen_Click(object sender, RoutedEventArgs e)
+        {
+            var data = this.persistenceProcessor.Open();
+            this.model.Stitches.AddRange(data);
+            stitchList.Items.Refresh();
+        }
     }
 }
