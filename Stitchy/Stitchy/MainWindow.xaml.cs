@@ -1,18 +1,6 @@
 ﻿using Stitchy.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Stitchy
 {
@@ -31,6 +19,8 @@ namespace Stitchy
             this.persistenceProcessor = new PersistenceProcessor();
 
             stitchList.ItemsSource = model.Stitches;
+
+            this.LoadData();
         }
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
@@ -44,6 +34,8 @@ namespace Stitchy
 
             this.model.Stitches.Add(stitch);
             stitchList.Items.Refresh();
+            this.UpdateTotal();
+            this.SaveData();
         }
 
         private void StitchListItemDelete_Click(object sender, RoutedEventArgs e)
@@ -52,23 +44,39 @@ namespace Stitchy
 
             this.model.Stitches.RemoveAt(stitchList.SelectedIndex);
             stitchList.Items.Refresh();
+            this.UpdateTotal();
+            this.SaveData();
         }
 
         private void MenuItemSave_Click(object sender, RoutedEventArgs e)
         {
-            this.persistenceProcessor.Save(this.model.Stitches);
+            this.SaveData();
         }
 
         private void MenuItemOpen_Click(object sender, RoutedEventArgs e)
+        {
+            this.LoadData();
+        }
+
+        private void LoadData()
         {
             var data = this.persistenceProcessor.Open();
             this.model.Stitches.Clear();
             this.model.Stitches.AddRange(data);
             stitchList.Items.Refresh();
+            this.UpdateTotal();
+        }
 
+        private void SaveData()
+        {
+            this.persistenceProcessor.Save(this.model.Stitches);
+        }
+
+        private void UpdateTotal()
+        {
             var totalDuration = new TimeSpan(0);
 
-            foreach(var stitch in this.model.Stitches)
+            foreach (var stitch in this.model.Stitches)
             {
                 totalDuration += stitch.Duration;
             }
